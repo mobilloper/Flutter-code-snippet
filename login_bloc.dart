@@ -44,9 +44,9 @@ class LoginBloc extends Bloc<LoginEvent, BaseBlocState> {
 
   Stream<BaseBlocState> _handleLoginWithEmail(String input, String password, String deviceId) async* {
     if (!AuthUtils.validateEmailValid(input)) {
-      yield UIControlState.showError('Vui lòng nhập đúng định dạng Email hoặc Số điện thoại');
+      yield UIControlState.showError('Please enter the right email or phone number format.');
     } else if (!AuthUtils.validatePasswordValid(password)) {
-      yield UIControlState.showError('Vui lòng nhập password hợp lệ');
+      yield UIControlState.showError('Please enter a valid password.');
     } else {
       yield UIControlState.showLoading();
       try {
@@ -64,9 +64,9 @@ class LoginBloc extends Bloc<LoginEvent, BaseBlocState> {
 
   Stream<BaseBlocState> _handleLoginWithMobile(String input, String password, String deviceId) async* {
     if (!AuthUtils.validateMobile(input)) {
-      yield UIControlState.showError("Vui lòng nhập đúng định dạng Email hoặc Số điện thoại");
+      yield UIControlState.showError("Please enter the right email or phone number format.");
     } else if (!AuthUtils.validatePasswordValid(password)) {
-      yield UIControlState.showError("Vui lòng nhập password hợp lệ");
+      yield UIControlState.showError("Please enter a valid password.");
     } else {
       yield UIControlState.showLoading();
       try {

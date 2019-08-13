@@ -105,7 +105,7 @@ class _LoginScreenState extends BaseState<LoginScreen> with ErrorMessageHandler 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: YRTextField(
-                  hintText: 'Nhập email',
+                  hintText: 'Enter email',
                   onTextChanged: (value) {
                     _email = value;
                   },
@@ -117,7 +117,7 @@ class _LoginScreenState extends BaseState<LoginScreen> with ErrorMessageHandler 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: YRTextField(
-                  hintText: 'Nhập mật khẩu',
+                  hintText: 'Enter password',
                   onTextChanged: (value) {
                     _password = value;
                   },
@@ -134,7 +134,7 @@ class _LoginScreenState extends BaseState<LoginScreen> with ErrorMessageHandler 
                   child: FlatButton(
                     padding: EdgeInsets.symmetric(horizontal: 0),
                     child: Text(
-                      "Quên mật khẩu?",
+                      "Forgot password?",
                       style: TextStyle(color: HColors.hintTextColor, fontSize: 18, fontWeight: FontWeight.w600),
                     ),
                     onPressed: () => {Navigator.pushNamed(context, "/forgotpass")},
@@ -153,7 +153,7 @@ class _LoginScreenState extends BaseState<LoginScreen> with ErrorMessageHandler 
                     backgroundColor: HColors.ColorPrimary,
                     textColor: HColors.black,
                     font: Hfonts.LatoSemiBold,
-                    text: "Đăng nhập",
+                    text: "Login",
                     width: MediaQuery.of(context).size.width * 0.4,
                     buttonPadding: 10,
                     radiusValue: 4,
@@ -174,7 +174,7 @@ class _LoginScreenState extends BaseState<LoginScreen> with ErrorMessageHandler 
                     onPressed: () {
                       Navigator.pushNamed(context, '/signup');
                     },
-                    text: "Đăng ký",
+                    text: "Signup",
                     icon: Icon(FontAwesomeIcons.facebookF),
                     backgroundColor: HColors.salmon,
                     font: Hfonts.LatoSemiBold,
@@ -225,7 +225,7 @@ class _LoginScreenState extends BaseState<LoginScreen> with ErrorMessageHandler 
       _deviceId = await getDeviceId();
       _loginBloc.dispatch(LoginFacebookRequest(_facebookEmail, _fullname, _facebookId, _deviceId, null));
     } catch (e) {
-      super.showErrorToast(_context, "Có lỗi: ${e.toString()}");
+      super.showErrorToast(_context, "Errors: ${e.toString()}");
     }
   }
 
@@ -243,13 +243,13 @@ class _LoginScreenState extends BaseState<LoginScreen> with ErrorMessageHandler 
       barrierDismissible: false, // dialog is dismissible with a tap on the barrier
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Một bước nữa thôi, vui lòng nhập số điện thoại để hoàn tất'),
+          title: Text('One more step, please enter the phone number to complete.'),
           content: new Row(
             children: <Widget>[
               new Expanded(
                   child: new TextField(
                 autofocus: true,
-                decoration: new InputDecoration(labelText: 'Số điện thoại', hintText: '0919991991'),
+                decoration: new InputDecoration(labelText: 'Phone number', hintText: '0919991991'),
                 onChanged: (value) {
                   _phone = value;
                 },
@@ -258,7 +258,7 @@ class _LoginScreenState extends BaseState<LoginScreen> with ErrorMessageHandler 
           ),
           actions: <Widget>[
             FlatButton(
-              child: Text('Xác nhận'),
+              child: Text('Confirm'),
               onPressed: () => _handleLoginWithFacebookAndSubmitedPhone(_context),
             ),
           ],
